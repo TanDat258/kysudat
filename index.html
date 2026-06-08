@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Landing page profile cá nhân của Huỳnh Tấn Đạt - sinh viên Kỹ thuật Xây dựng định hướng kết cấu, BIM và tự động hóa.">
+  <title>Huỳnh Tấn Đạt | Civil Engineering Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="profile-app" aria-live="polite">
+    <section class="hero" aria-label="Profile tương tác">
+      <div class="site-topbar">
+        <a class="brand" href="#" aria-label="Trang chủ Huỳnh Tấn Đạt">
+          <span class="brand-mark">HTD</span>
+          <span>
+            <strong>Huỳnh Tấn Đạt</strong>
+            <small>Kỹ thuật Xây dựng</small>
+          </span>
+        </a>
+        <div class="top-actions">
+          <button class="ghost-button ghost-button-strong" type="button" data-open="quick">Xem nhanh</button>
+          <button class="ghost-button" type="button" data-open="qr">QR</button>
+          <button class="ghost-button" type="button" data-open="contact">Liên hệ</button>
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <p class="eyebrow">Civil Engineering • BIM • Automation</p>
+        <h1>Profile tương tác của Đạt</h1>
+        <p class="intro">Sinh viên năm 4 Trường Đại học Nha Trang, định hướng kết cấu công trình, BIM và tự động hóa trong xây dựng.</p>
+      </div>
+
+      <div class="stage" id="stage">
+        <div class="speech-bubble" id="speechBubble">Hello, mình là Đạt. Bạn muốn biết gì về mình?</div>
+
+        <button class="chibi" id="chibiButton" type="button" aria-expanded="false" aria-controls="profileMenu" aria-label="Mở menu profile">
+          <img class="chibi-image" src="assets/images/profile-photo.jfif" alt="Chibi kỹ sư xây dựng Huỳnh Tấn Đạt">
+        </button>
+
+        <nav class="profile-menu" id="profileMenu" aria-label="Các mục profile">
+          <button type="button" data-open="personal">Thông tin cá nhân</button>
+          <button type="button" data-open="education">Trình độ học vấn</button>
+          <button type="button" data-open="skills">Kỹ năng</button>
+          <button type="button" data-open="projects">Dự án cá nhân</button>
+          <button type="button" data-open="achievements">Thành tựu</button>
+          <button type="button" data-open="strengths">Ưu điểm và nhược điểm</button>
+          <button type="button" data-open="hobbies">Sở thích</button>
+          <button type="button" data-open="direction">Định hướng phát triển</button>
+          <button type="button" data-open="contact">Liên hệ</button>
+        </nav>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true">
+        <span></span>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <article class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Đóng popup">×</button>
+      <p class="modal-kicker" id="modalKicker">Profile</p>
+      <h2 id="modalTitle"></h2>
+      <div class="modal-body" id="modalBody"></div>
+    </article>
+  </div>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Đóng ảnh phóng to">×</button>
+    <img id="lightboxImage" src="" alt="">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
