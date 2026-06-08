@@ -41,8 +41,8 @@ const profileData = {
     title: "Mã QR profile",
     body: `
       <div class="qr-card">
-        <img src="assets/images/profile-qr.png" alt="Mã QR mở profile Huỳnh Tấn Đạt" data-zoom>
-        <p>Mã này mở profile qua mạng nội bộ: http://172.16.0.108:8080/. Điện thoại cần dùng cùng Wi-Fi với máy tính và server nhỏ đang chạy.</p>
+        <img src="assets/images/profile-qr.png?v=tandat258" alt="Mã QR mở profile Huỳnh Tấn Đạt" data-zoom>
+        <p>Mã này mở profile public tại https://tandat258.github.io/kysudat/. Bạn có thể in hoặc gửi mã này cho người khác quét trực tiếp.</p>
         <a href="assets/images/profile-qr.png" download="huynh-tan-dat-profile-qr.png">Tải mã QR</a>
       </div>
     `
