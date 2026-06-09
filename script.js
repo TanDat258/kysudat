@@ -127,12 +127,14 @@ const profileData = {
     body: `
       <div class="project-showcase" data-project-showcase>
         <div class="project-tabs" role="tablist" aria-label="Chọn dự án">
-          <button class="active" type="button" data-project-tab data-video="assets/videos/wind-load.mp4" data-title="Phần mềm tính tải trọng gió" data-desc="Tool hỗ trợ tính toán tải trọng gió cho đồ án và công việc kỹ thuật. Video demo quy trình nhập dữ liệu, tính toán và kiểm tra kết quả.">Tính gió</button>
-          <button type="button" data-project-tab data-video="assets/videos/rebar-tool.mp4" data-title="Tool tính thép dầm/cột" data-desc="Sản phẩm hỗ trợ tính thép dầm/cột, kết hợp các tool nhỏ phục vụ triển khai và kiểm tra cấu kiện trong Revit.">Tính thép</button>
-          <button type="button" data-project-tab data-video="assets/videos/architecture.mp4" data-title="Đồ án thiết kế chung cư" data-desc="Video thuyết trình kiến trúc, phối cảnh, mặt bằng và hướng triển khai đồ án thiết kế kết cấu chung cư.">Kiến trúc</button>
+          <button class="active" type="button" data-project-tab data-type="youtube" data-src="https://www.youtube.com/embed/ROCsuzjvgYM" data-title="Phần mềm tính tải trọng gió" data-desc="Tool hỗ trợ tính toán tải trọng gió cho đồ án và công việc kỹ thuật. Video demo quy trình nhập dữ liệu, tính toán và kiểm tra kết quả.">Tính gió</button>
+          <button type="button" data-project-tab data-type="youtube" data-src="https://www.youtube.com/embed/g4NFctR0s3Q" data-title="Tool tính thép dầm/cột" data-desc="Sản phẩm hỗ trợ tính thép dầm/cột, kết hợp các tool nhỏ phục vụ triển khai và kiểm tra cấu kiện trong Revit.">Tính thép</button>
+          <button type="button" data-project-tab data-type="local" data-src="assets/videos/architecture.mp4" data-title="Đồ án thiết kế chung cư" data-desc="Video thuyết trình kiến trúc, phối cảnh, mặt bằng và hướng triển khai đồ án thiết kế kết cấu chung cư.">Kiến trúc</button>
         </div>
         <div class="project-player">
-          <video src="assets/videos/wind-load.mp4" controls preload="metadata" playsinline></video>
+          <div class="project-media">
+            <iframe src="https://www.youtube.com/embed/ROCsuzjvgYM" title="Video phần mềm tính tải trọng gió" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
           <div class="project-copy">
             <span>Dự án nổi bật</span>
             <h3>Phần mềm tính tải trọng gió</h3>
@@ -283,6 +285,9 @@ function openModal(key) {
 
 function closeModal() {
   modalBody.querySelectorAll("video").forEach((video) => video.pause());
+  modalBody.querySelectorAll("iframe").forEach((iframe) => {
+    iframe.src = "about:blank";
+  });
   modalBackdrop.hidden = true;
   document.body.style.overflow = "";
   if (lastFocusedElement) {
@@ -329,7 +334,7 @@ modalBody.addEventListener("click", (event) => {
   const projectTab = event.target.closest("[data-project-tab]");
   if (projectTab) {
     const showcase = projectTab.closest("[data-project-showcase]");
-    const video = showcase.querySelector("video");
+    const media = showcase.querySelector(".project-media");
     const title = showcase.querySelector(".project-copy h3");
     const description = showcase.querySelector(".project-copy p");
 
@@ -337,9 +342,17 @@ modalBody.addEventListener("click", (event) => {
       tab.classList.toggle("active", tab === projectTab);
     });
 
-    video.pause();
-    video.src = projectTab.dataset.video;
-    video.load();
+    const currentVideo = media.querySelector("video");
+    if (currentVideo) {
+      currentVideo.pause();
+    }
+
+    if (projectTab.dataset.type === "youtube") {
+      media.innerHTML = `<iframe src="${projectTab.dataset.src}" title="Video ${projectTab.dataset.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+    } else {
+      media.innerHTML = `<video src="${projectTab.dataset.src}" controls preload="metadata" playsinline></video>`;
+    }
+
     title.textContent = projectTab.dataset.title;
     description.textContent = projectTab.dataset.desc;
   }

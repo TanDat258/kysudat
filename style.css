@@ -872,10 +872,16 @@ h1 {
   border: 1px solid #dce8f3;
 }
 
-.project-player video {
+.project-media {
+  background: #071b33;
+}
+
+.project-player video,
+.project-player iframe {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
+  border: 0;
   background: #071b33;
 }
 
